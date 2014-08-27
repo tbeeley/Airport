@@ -16,6 +16,10 @@ describe 'airport' do
 			expect(airport.plane_count).to eq 0
 		end
 
+		it 'should have good weather conditions' do
+			expect(airport.stormy?).to be false
+		end
+
 		it 'should be created with a name' do
 			expect(airport.name).to eq 'heathrow'
 		end
@@ -46,9 +50,16 @@ describe 'airport' do
 			expect(airport.plane_count).to eq 0
 		end
 
-		# it 'will not accept a plane if full' do
-		# 	fill_airport(airport)
-		# 	expect(airport.accept_plane(plane)).to raise 'No space here'
+	end
+
+	context 'air traffic control' do
+
+		it 'will not accept a plane if full' do
+			fill_airport(airport)
+			expect{ airport.accept_plane(plane) }.to raise_error 'No space here'
+		end
+
+		# it 'will not accept a plane if weather is stormy' do
 
 		# end
 
