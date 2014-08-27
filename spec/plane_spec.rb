@@ -9,15 +9,20 @@ require 'plane'
 
 describe 'plane' do
 
+	let(:plane) { Plane.new }
+
 	it 'should have a flying status when created' do
-		plane = Plane.new
 		expect(plane.flying?).to be true
 	end
 
 	it 'should be able to take off' do
-		plane = Plane.new
 		plane.take_off
 		expect(plane.flying?).to be true
+	end
+
+	it 'should be able to land' do
+		plane.land
+		expect(plane.flying?).to be false
 	end
 
 end
