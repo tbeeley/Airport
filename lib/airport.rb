@@ -22,4 +22,7 @@ class Airport
 		planes.pop
 	end
 
+	def full?
+		plane_count == self.capacity
+	end
 end

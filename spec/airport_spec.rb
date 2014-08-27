@@ -7,7 +7,7 @@ describe 'airport' do
 	let(:plane)	   { double(:plane)		 	 	  }
 
 	def fill_airport(airport)
-		100.times { airport.accept_plane }
+		100.times { airport.accept_plane(plane) }
 	end
 
 	context 'when created' do
@@ -22,6 +22,11 @@ describe 'airport' do
 
 		it 'should have a custom capacity' do
 			expect(airport.capacity).to eq 100
+		end
+
+		it 'should know if the airport is full' do
+			fill_airport(airport)
+			expect(airport.full?).to eq true
 		end
 
 	end
@@ -40,6 +45,12 @@ describe 'airport' do
 			airport.release_plane(plane)
 			expect(airport.plane_count).to eq 0
 		end
+
+		# it 'will not accept a plane if full' do
+		# 	fill_airport(airport)
+		# 	expect(airport.accept_plane(plane)).to raise 'No space here'
+
+		# end
 
 	end
 
