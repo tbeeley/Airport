@@ -9,7 +9,11 @@ require 'plane'
 
 describe 'plane' do
 
-	let(:plane) { Plane.new }
+	let(:plane) { Plane.new('spitfire') }
+
+	it 'should be created with a name' do
+		expect(plane.name).to eq 'spitfire'
+	end
 
 	it 'should have a flying status when created' do
 		expect(plane.flying?).to be true

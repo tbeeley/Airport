@@ -1,8 +1,11 @@
 class Plane
 
-	def initialize
+	def initialize(name)
+		@name = name
 		@flying = true
 	end
+
+	attr_accessor :name
 
 	def take_off
 		@flying = true
