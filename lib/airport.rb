@@ -27,6 +27,7 @@ class Airport
 	def release_plane(plane)
 		raise 'Unsafe to takeoff' if stormy?
 		raise 'No planes at airport' if self.planes.empty?
+		plane.take_off
 		planes.pop
 	end
 

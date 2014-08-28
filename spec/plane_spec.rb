@@ -37,4 +37,12 @@ describe 'plane' do
 		expect(plane).to_not be_flying
 	end
 
+	it 'should change its flying status after takeing off' do
+		expect(plane).to be_flying
+		airport.accept_plane(plane)
+		expect(plane).to_not be_flying
+		airport.release_plane(plane)
+		expect(plane).to be_flying
+	end
+
 end
