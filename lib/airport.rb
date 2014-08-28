@@ -34,4 +34,8 @@ class Airport
 		@stormy
 	end
 
+	def weather_deteriorates
+		@stormy = true
+	end
+
 end

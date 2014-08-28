@@ -52,6 +52,14 @@ describe 'airport' do
 
 	end
 
+	context 'weather' do
+
+		it 'can change for the worse' do
+			airport.weather_deteriorates
+			expect(airport.stormy?).to eq true
+		end
+	end
+
 	context 'air traffic control' do
 
 		it 'will not accept a plane if full' do
@@ -59,7 +67,12 @@ describe 'airport' do
 			expect{ airport.accept_plane(plane) }.to raise_error 'No space here'
 		end
 
+
+
 		# it 'will not accept a plane if weather is stormy' do
+		# 	airport.weather_deteriorates
+		# 	expect
+
 
 		# end
 
