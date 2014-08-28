@@ -1,10 +1,10 @@
 class Airport
 
-	def initialize(name, capacity = 20, weather = false)
+	def initialize(name, capacity = 20, stormy = false)
 		@name = name
 		@capacity = capacity
 		@planes = []
-		@stormy = false
+		@stormy = stormy
 	end
 
 	attr_accessor :name
@@ -18,11 +18,13 @@ class Airport
 
 	def accept_plane(plane)
 		raise 'No space here' if full?
+		raise 'Unsafe to land' if stormy?
 		planes << plane
 	end
 
 
 	def release_plane(plane)
+		raise 'Unsafe to takeoff' if stormy?
 		planes.pop
 	end
 

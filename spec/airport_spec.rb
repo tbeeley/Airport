@@ -4,7 +4,7 @@ require 'plane'
 describe 'airport' do
 
 	let(:airport)  			{ Airport.new("heathrow", 100) 				}
-	let(:stormy_airport) 	{ Airport.new("gatwick", 100, stormy?: true)}
+	let(:stormy_airport) 	{ Airport.new("gatwick", 100, true)	}
 	let(:plane)	   			{ double(:plane)		 	 	  			}
 
 
@@ -18,8 +18,9 @@ describe 'airport' do
 			expect(airport.plane_count).to eq 0
 		end
 
-		it 'should have good weather conditions' do
+		it 'should have good weather conditions, unless stated otherwise' do
 			expect(airport.stormy?).to be false
+			expect(stormy_airport.stormy?).to be true
 		end
 
 		it 'should be created with a name' do
@@ -74,15 +75,13 @@ describe 'airport' do
 			expect{ airport.accept_plane(plane) }.to raise_error 'No space here'
 		end
 
+		it 'will not accept a plane if weather is stormy' do
+			expect{ stormy_airport.accept_plane(plane) }.to raise_error 'Unsafe to land'
+		end
 
-
-		# it 'will not accept a plane if weather is stormy' do
-		# 	airport.weather_deteriorates
-		# 	expect
-
-
-		# end
+		it 'cannot release a plane if weather is stormy' do
+			expect { stormy_airport.release_plane(plane) }.to raise_error 'Unsafe to takeoff'
+		end
 
 	end
-
 end
