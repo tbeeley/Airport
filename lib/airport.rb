@@ -20,11 +20,13 @@ class Airport
 		raise 'No space here' if full?
 		raise 'Unsafe to land' if stormy?
 		planes << plane
+		plane.land
 	end
 
 
 	def release_plane(plane)
 		raise 'Unsafe to takeoff' if stormy?
+		raise 'No planes at airport' if self.planes.empty?
 		planes.pop
 	end
 

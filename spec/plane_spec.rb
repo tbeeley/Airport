@@ -1,4 +1,5 @@
 require 'plane'
+require 'airport'
 # A plane currently in the airport can be requested to take off.
 #
 # No more planes can be added to the airport, if it's full.
@@ -10,6 +11,7 @@ require 'plane'
 describe 'plane' do
 
 	let(:plane) { Plane.new('spitfire') }
+	let(:airport) { Airport.new("heathrow", 100) 	}
 
 	it 'should be created with a name' do
 		expect(plane.name).to eq 'spitfire'
@@ -27,6 +29,12 @@ describe 'plane' do
 	it 'should be able to land' do
 		plane.land
 		expect(plane.flying?).to be false
+	end
+
+	it 'should change its flying status after landing' do
+		expect(plane).to be_flying
+		airport.accept_plane(plane)
+		expect(plane).to_not be_flying
 	end
 
 end

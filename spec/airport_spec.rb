@@ -5,7 +5,7 @@ describe 'airport' do
 
 	let(:airport)  			{ Airport.new("heathrow", 100) 				}
 	let(:stormy_airport) 	{ Airport.new("gatwick", 100, true)	}
-	let(:plane)	   			{ double(:plane)		 	 	  			}
+	let(:plane)	   			{ Plane.new('spitfire') }
 
 
 	def fill_airport(airport)
@@ -83,5 +83,12 @@ describe 'airport' do
 			expect { stormy_airport.release_plane(plane) }.to raise_error 'Unsafe to takeoff'
 		end
 
+		it 'should not release a plane if there are none parked' do
+			airport.accept_plane(plane)
+			airport.release_plane(plane)
+			expect{ airport.release_plane(plane) }.to raise_error 'No planes at airport'
+		end
+
 	end
+
 end
