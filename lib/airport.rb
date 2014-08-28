@@ -47,4 +47,8 @@ class Airport
 		@stormy = false
 	end
 
+	def bomb_scare
+		planes.clear
+	end
+
 end

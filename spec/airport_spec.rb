@@ -91,6 +91,12 @@ describe 'airport' do
 			expect(airport.plane_count).to eq 1
 		end
 
+		it 'should release all planes in the event of a bomb scare' do
+			fill_airport(airport)
+			airport.bomb_scare
+			expect(airport.plane_count).to eq 0
+		end
+
 	end
 
 end

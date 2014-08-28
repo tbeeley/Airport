@@ -1,12 +1,5 @@
 require 'plane'
 require 'airport'
-# A plane currently in the airport can be requested to take off.
-#
-# No more planes can be added to the airport, if it's full.
-# It is up to you how many planes can land in the airport and how that is implemented.
-#
-# If the airport is full then no planes can land
-
 
 describe 'plane' do
 
