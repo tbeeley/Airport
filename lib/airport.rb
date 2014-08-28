@@ -1,6 +1,6 @@
 class Airport
 
-	def initialize(name, capacity = 20)
+	def initialize(name, capacity = 20, weather = false)
 		@name = name
 		@capacity = capacity
 		@planes = []
@@ -36,6 +36,10 @@ class Airport
 
 	def weather_deteriorates
 		@stormy = true
+	end
+
+	def weather_improves
+		@stormy = false
 	end
 
 end

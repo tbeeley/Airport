@@ -3,8 +3,10 @@ require 'plane'
 
 describe 'airport' do
 
-	let(:airport)  { Airport.new("heathrow", 100) }
-	let(:plane)	   { double(:plane)		 	 	  }
+	let(:airport)  			{ Airport.new("heathrow", 100) 				}
+	let(:stormy_airport) 	{ Airport.new("gatwick", 100, stormy?: true)}
+	let(:plane)	   			{ double(:plane)		 	 	  			}
+
 
 	def fill_airport(airport)
 		100.times { airport.accept_plane(plane) }
@@ -57,6 +59,11 @@ describe 'airport' do
 		it 'can change for the worse' do
 			airport.weather_deteriorates
 			expect(airport.stormy?).to eq true
+		end
+
+		it 'can change for the better' do
+			stormy_airport.weather_improves
+			expect(stormy_airport.stormy?).to eq false
 		end
 	end
 
