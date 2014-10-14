@@ -99,4 +99,25 @@ describe 'airport' do
 
 	end
 
+
+	context 'The grand finale' do
+
+		let(:airport)  			{ Airport.new("heathrow", 100) 				}
+		let(:plane)   			{ Plane.new }
+
+		it 'all planes can land and all planes can take off' do
+
+			airport.stub(:weather_stormy?).and_return(false)
+
+			planes = Array.new(airport.capacity) { Plane.new('colt') } # 20 new planes
+			planes.each do |plane|
+				expect(plane).to be_flying
+				airport.accept_plane(plane)
+				expect(plane).not_to be_flying
+			end
+
+		end
+
+	end
+
 end
