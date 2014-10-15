@@ -17,7 +17,7 @@ The aim of the exercise was to practice OOP, SOLID principles and Ruby.
 
 ##How to run the program
 
-    *git clone https://github.com/tbeeley/BorisBikes2.git
+    *git clone https://github.com/tbeeley/Airport.git
     *cd Airport
     *irb
     *require './files.rb'
