@@ -1,6 +1,6 @@
 Airport
 =======
-
+[![Code Climate](https://codeclimate.com/github/tbeeley/Airport/badges/gpa.svg)](https://codeclimate.com/github/tbeeley/Airport)
 ![Picture](./assets/airport.png)
 
 ##Objectives
