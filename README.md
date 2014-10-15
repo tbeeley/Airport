@@ -1,6 +1,8 @@
 Airport
 =======
 
+![Picture](./assets/airport.png)
+
 ##Objectives
 
 The test is to write software to control the flow of planes at an airport. The planes can land and take off provided that the weather is sunny. 
