@@ -4,7 +4,7 @@ require 'plane'
 describe 'airport' do
 
 	let(:airport)  			{ Airport.new("heathrow", 100) 				}
-	let(:stormy_airport) 	{ Airport.new("gatwick", 100, true)	}
+	# let(:stormy_airport) 	{ Airport.new("gatwick", 100, true)	}
 	let(:plane)	   			{ Plane.new('spitfire') }
 	let(:plane2)			{ Plane.new('hurricane') }
 
@@ -21,7 +21,8 @@ describe 'airport' do
 
 		it 'should have good weather conditions, unless stated otherwise' do
 			expect(airport.stormy?).to be false
-			expect(stormy_airport.stormy?).to be true
+			airport.weather_deteriorates
+			expect(airport.stormy?).to be true
 		end
 
 		it 'should be created with a name' do
@@ -58,14 +59,17 @@ describe 'airport' do
 
 	context 'weather' do
 
-		it 'can change for the worse' do
+		before(:each) do
 			airport.weather_deteriorates
+		end
+
+		it 'can change for the worse' do
 			expect(airport.stormy?).to eq true
 		end
 
 		it 'can change for the better' do
-			stormy_airport.weather_improves
-			expect(stormy_airport.stormy?).to eq false
+			airport.weather_improves
+			expect(airport.stormy?).to eq false
 		end
 	end
 
@@ -77,11 +81,13 @@ describe 'airport' do
 		end
 
 		it 'will not accept a plane if weather is stormy' do
-			expect{ stormy_airport.accept_plane(plane) }.to raise_error 'Unsafe to land'
+			airport.weather_deteriorates
+			expect{ airport.accept_plane(plane) }.to raise_error 'Unsafe to land'
 		end
 
 		it 'cannot release a plane if weather is stormy' do
-			expect { stormy_airport.release_plane(plane) }.to raise_error 'Unsafe to takeoff'
+			airport.weather_deteriorates
+			expect { airport.release_plane(plane) }.to raise_error 'Unsafe to takeoff'
 		end
 
 		it 'should not release a plane if it is not at the airport' do

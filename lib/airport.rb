@@ -1,10 +1,11 @@
 class Airport
 
-	def initialize(name, capacity = 20, stormy = false)
+	def initialize(name, capacity = 20)
 		@name = name
 		@capacity = capacity
 		@planes = []
-		@stormy = stormy
+		weather_improves
+
 	end
 
 	attr_accessor :name
