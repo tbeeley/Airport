@@ -22,7 +22,6 @@ The aim of the exercise was to practice OOP, SOLID principles and Ruby.
     *irb
     *require './files.rb'
 
-
 ##How to run the tests
 
     *cd Airport
